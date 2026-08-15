@@ -18,26 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // Get today's date and time
         const now = new Date().getTime();
 
-        // Update Main Hero Countdown
-        const mainDistance = mainCountDownDate - now;
-        const mainElement = document.getElementById("countdown");
-        if (mainElement) {
-            if (mainDistance < 0) {
-                mainElement.innerHTML = "<div class='text-white fs-3 font-weight-bold'>The big day is here!</div>";
-            } else {
-                const days = Math.floor(mainDistance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((mainDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((mainDistance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((mainDistance % (1000 * 60)) / 1000);
-                mainElement.innerHTML = `
-                    <div class="countdown-item"><span>${days}</span><small>Days</small></div>
-                    <div class="countdown-item"><span>${hours}</span><small>Hours</small></div>
-                    <div class="countdown-item"><span>${minutes}</span><small>Minutes</small></div>
-                    <div class="countdown-item"><span>${seconds}</span><small>Seconds</small></div>
-                `;
-            }
-        }
-        
         // Update Mini Countdowns
         miniCountdowns.forEach(el => {
             const dateStr = el.getAttribute('data-date');
