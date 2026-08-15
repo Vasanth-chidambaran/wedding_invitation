@@ -249,6 +249,27 @@ h1, h2, h3, .name-cursive {
     font-weight: 400;
 }
 
+/* Mini Countdown */
+.mini-cd-item {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 8px 12px;
+    border-radius: 8px;
+    min-width: 50px;
+    text-align: center;
+}
+.mini-cd-item span {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+.mini-cd-item small {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #666;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .hero .couple-names {
