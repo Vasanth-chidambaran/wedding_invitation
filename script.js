@@ -111,4 +111,41 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
+    // Background Music Controls
+    const bgMusic = document.getElementById('bg-music');
+    let hasInteracted = false;
+
+    function playAudio() {
+        if (bgMusic && bgMusic.paused) {
+            bgMusic.play().then(() => {
+                // Only remove listeners once the audio is actively playing
+                removeInteractionListeners();
+            }).catch(err => {
+                console.log("Play attempt blocked/failed. Waiting for valid user gesture.", err);
+            });
+        }
+    }
+
+    function removeInteractionListeners() {
+        if (!hasInteracted) {
+            hasInteracted = true;
+            document.removeEventListener('click', startAudioOnInteraction);
+            document.removeEventListener('touchstart', startAudioOnInteraction);
+            document.removeEventListener('scroll', startAudioOnInteraction);
+        }
+    }
+
+    // Autoplay fallback on user interaction
+    const startAudioOnInteraction = function() {
+        playAudio();
+    };
+
+    // Try playing immediately
+    playAudio();
+
+    // Set up listeners in case browser blocks the immediate autoplay
+    document.addEventListener('click', startAudioOnInteraction);
+    document.addEventListener('touchstart', startAudioOnInteraction);
+    document.addEventListener('scroll', startAudioOnInteraction);
 });
